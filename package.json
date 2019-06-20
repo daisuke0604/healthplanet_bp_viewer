@@ -1,0 +1,38 @@
+{
+  "name": "healthplanet_bp_viewer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --inline --watch --color -d --port 3000",
+    "build": "webpack --mode production",
+    "develop": "webpack --mode development",
+    "up": "cd mysql && sudo docker-compose up -d",
+    "down": "cd mysql && sudo docker-compose down"
+  },
+  "keywords": [
+    "tanita",
+    "healthplanet"
+  ],
+  "author": "Daisuke Yamamoto",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@riotjs/compiler": "^4.2.6",
+    "@riotjs/webpack-loader": "^4.0.0",
+    "babel-loader": "^8.0.6",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "prettier": "^1.18.2",
+    "riot": "^4.0.8",
+    "webpack": "^4.33.0",
+    "webpack-cli": "^3.3.3",
+    "webpack-dev-server": "^3.7.1"
+  },
+  "dependencies": {
+    "dotenv": "^8.0.0"
+  }
+}

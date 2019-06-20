@@ -1,0 +1,29 @@
+<bp-list>
+  <div if={ state.token === '' }>
+    <label for="user">
+      user: <input type="text" id="user">
+    </label>
+    <label for="user">
+      pass: <input type="password" id="pass">
+    </label>
+    <button onclick={ handleLogin }>Login</button>
+  </div>
+  <div if={ state.token !== '' }>list</div>
+  <script>
+    import { login } from './lib';
+    export default {
+      state: {
+        token: '',
+      },
+      onBeforeMount(props, state) {
+      },
+      handleLogin() {
+        login(this.$('#user').value, this.$('#pass').value).then(token => {
+          this.update({
+            token: token,
+          })
+        });
+      },
+    }
+  </script>
+</bp-list>
