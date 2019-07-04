@@ -2,7 +2,7 @@ import * as env from './env';
 import moment from 'moment/moment';
 
 export const login = async (user, pass) => {
-  const res = await fetch(`${env.host}:${env.port}/login`, {
+  const res = await fetch(`${env.host}/bp-api/login`, {
     method: 'POST',
     mode: 'cors',
     headers: {
@@ -19,7 +19,7 @@ export const login = async (user, pass) => {
 };
 
 export const fetchBp = async token => {
-  const res = await fetch(`${env.host}:${env.port}/bp`, {
+  const res = await fetch(`${env.host}/bp-api/fetch`, {
     method: 'GET',
     mode: 'cors',
     headers: {
