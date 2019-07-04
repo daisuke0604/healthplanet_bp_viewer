@@ -1,28 +1,89 @@
 <bp-list>
-  <div if={ state.token === '' }>
-    <label for="user">
-      user: <input type="text" id="user">
-    </label>
-    <label for="user">
-      pass: <input type="password" id="pass">
-    </label>
-    <button onclick={ handleLogin }>Login</button>
+  <div id="login" if={ !state.login }>
+    <input class="login_input" type="text" id="user" placeholder="user" autofocus="true"><br>
+    <input class="login_input" type="password" id="pass" placeholder="pass"><br>
+    <button id="login_button" onclick={ handleLogin }>Login</button>
   </div>
-  <div if={ state.token !== '' }>list</div>
+  <div if={ state.login }>
+    <table>
+      <thead>
+        <tr>
+          <th>測定日時</th>
+          <th>最高</th>
+          <th>最低</th>
+          <th>脈拍</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr each={ item in state.data }>
+          <td class="date">{ item.測定日時 }</td>
+          <td class="value">{ item.最高血圧 }</td>
+          <td class="value">{ item.最低血圧 }</td>
+          <td class="value">{ item.脈拍 }</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    table {
+      width: 96vw;
+      margin: 2vw;
+    }
+    tr:nth-child(even) {
+      background-color: rgba(0, 0, 0, 0.10);
+    }
+    th, td {
+      padding: 4px 8px;
+    }
+    th {
+      color: white;
+      background-color: rgba(0, 0, 0, 0.56);
+    }
+    td.date {
+      width: 55%;
+      text-align: center;
+    }
+    td.value {
+      width: 15%;
+      text-align: right;
+    }
+    #login {
+      margin: 8px;
+      text-align: center;
+    }
+    #login_button {
+      margin: 4px;
+      padding: 4px;
+      width: 200px;
+    }
+    .login_input {
+      margin: 4px;
+      padding: 4px;
+      width: 200px;
+    }
+  </style>
   <script>
-    import { login } from './lib';
+    import { login, fetchBp } from './lib';
     export default {
       state: {
-        token: '',
+        login: false,
+        data: [],
       },
       onBeforeMount(props, state) {
       },
       handleLogin() {
         login(this.$('#user').value, this.$('#pass').value).then(token => {
-          this.update({
-            token: token,
-          })
-        });
+          fetchBp(token).then(result => {
+            this.update({
+              login: true,
+              data: result,
+            });
+          }).catch(err => console.log(err));
+        }).catch(e => console.log(e));
       },
     }
   </script>
