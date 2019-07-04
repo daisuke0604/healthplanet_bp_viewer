@@ -30,7 +30,7 @@ export const fetchBp = async token => {
   const result = await res.json();
   moment.locale('ja');
   const formattedResult = result.map(item => {
-    item.測定日時 = moment(item.測定日時).format('MM/DD(ddd) HH:mm');
+    item.測定日時 = moment(item.測定日時).format('MM/DD(ddd)　HH:mm');
     return item;
   });
   return formattedResult;

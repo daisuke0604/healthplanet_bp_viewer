@@ -5,6 +5,7 @@
     <button id="login_button" onclick={ handleLogin }>Login</button>
   </div>
   <div if={ state.login }>
+    <div id="name">{ props.name }</div>
     <table>
       <thead>
         <tr>
@@ -31,7 +32,7 @@
     }
     table {
       width: 96vw;
-      margin: 2vw;
+      margin: auto 2vw;
     }
     tr:nth-child(even) {
       background-color: rgba(0, 0, 0, 0.10);
@@ -64,6 +65,12 @@
       margin: 4px;
       padding: 4px;
       width: 200px;
+    }
+    #name {
+      width: 96vw;
+      margin: auto 2vw;
+      padding: 4px;
+      text-align: right;
     }
   </style>
   <script>
