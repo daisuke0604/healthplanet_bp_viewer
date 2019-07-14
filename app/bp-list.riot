@@ -5,7 +5,10 @@
     <button id="login_button" onclick={ handleLogin }>Login</button>
   </div>
   <div if={ state.login }>
-    <div id="name">{ props.name }</div>
+    <div id="header">
+      <div id="date">{ props.date }</div>
+      <div id="name">{ props.name }</div>
+    </div>
     <table>
       <thead>
         <tr>
@@ -66,8 +69,17 @@
       padding: 4px;
       width: 200px;
     }
+    #header {
+      display: flex;
+    }
+    #date {
+      width: 46vw;
+      margin: auto 2vw;
+      padding: 4px;
+      text-align: left;
+    }
     #name {
-      width: 96vw;
+      width: 46vw;
       margin: auto 2vw;
       padding: 4px;
       text-align: right;
