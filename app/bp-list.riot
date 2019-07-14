@@ -7,6 +7,7 @@
   <div if={ state.login }>
     <div id="header">
       <div id="date">{ props.date }</div>
+      <div id="title">血圧測定データ</div>
       <div id="name">{ props.name }</div>
     </div>
     <table>
@@ -73,13 +74,19 @@
       display: flex;
     }
     #date {
-      width: 46vw;
+      width: 25vw;
       margin: auto 2vw;
       padding: 4px;
       text-align: left;
     }
+    #title {
+      width: 38vw;
+      margin: auto 2vw;
+      padding: 4px;
+      text-align: center;
+    }
     #name {
-      width: 46vw;
+      width: 25vw;
       margin: auto 2vw;
       padding: 4px;
       text-align: right;
