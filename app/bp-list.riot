@@ -99,8 +99,6 @@
         login: false,
         data: [],
       },
-      onBeforeMount(props, state) {
-      },
       handleLogin() {
         login(this.$('#user').value, this.$('#pass').value).then(token => {
           fetchBp(token).then(result => {
