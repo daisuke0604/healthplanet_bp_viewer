@@ -22,7 +22,8 @@
       <tbody>
         <tr each={ item in state.data }>
           <td class="date">{ item.測定日時 }</td>
-          <td class="value">{ item.最高血圧 }</td>
+          <td if={ item.最高血圧 >=150 } class="value mark">{ item.最高血圧 }</td>
+          <td if={ item.最高血圧 < 150 } class="value">{ item.最高血圧 }</td>
           <td class="value">{ item.最低血圧 }</td>
           <td class="value">{ item.脈拍 }</td>
         </tr>
@@ -52,9 +53,8 @@
       width: 55%;
       text-align: center;
     }
-    td.value {
-      width: 15%;
-      text-align: right;
+    td.mark {
+      font-weight: bold;
     }
     #login {
       margin: 8px;
