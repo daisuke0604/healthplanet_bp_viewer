@@ -27,11 +27,18 @@ export const fetchBp = async token => {
       authorization: `Bearer ${token}`,
     },
   });
-  const result = await res.json();
-  moment.locale('ja');
-  const formattedResult = result.map(item => {
-    item.測定日時 = moment(item.測定日時).format('MM/DD(ddd)　HH:mm');
-    return item;
-  });
-  return formattedResult;
+  switch (res.status) {
+    case 200: {
+      const result = await res.json();
+      moment.locale('ja');
+      const formattedResult = result.map(item => {
+        item.測定日時 = moment(item.測定日時).format('MM/DD(ddd)　HH:mm');
+        return item;
+      });
+      return formattedResult;
+    }
+
+    default:
+      throw new Error('unauthorized');
+  }
 };
